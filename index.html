@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplex Solver — Exact Fraction Arithmetic</title>
+    <meta name="description" content="Interactive Simplex, Dual Simplex, and ILPP (Gomory's Cutting Plane) solver with exact fraction arithmetic and step-by-step tableaux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header" id="header">
+            <div class="header-badge">LINEAR PROGRAMMING</div>
+            <h1 class="header-title">Simplex Solver</h1>
+            <p class="header-subtitle">Exact fraction arithmetic &bull; Step-by-step tableaux &bull; Simplex &bull; Dual Simplex &bull; ILPP</p>
+        </header>
+
+        <!-- Method Selector -->
+        <section class="method-selector" id="method-selector">
+            <button class="method-card active" data-method="simplex" id="btn-simplex">
+                <div class="method-icon">⬡</div>
+                <div class="method-name">Simplex</div>
+                <div class="method-desc">Standard simplex method for LPP</div>
+            </button>
+            <button class="method-card" data-method="dual" id="btn-dual">
+                <div class="method-icon">⬢</div>
+                <div class="method-name">Dual Simplex</div>
+                <div class="method-desc">Dual feasible, primal infeasible</div>
+            </button>
+            <button class="method-card" data-method="ilpp" id="btn-ilpp">
+                <div class="method-icon">⬣</div>
+                <div class="method-name">ILPP</div>
+                <div class="method-desc">Gomory's cutting plane method</div>
+            </button>
+        </section>
+
+        <!-- Input Section -->
+        <section class="input-section glass" id="input-section">
+            <div class="section-header">
+                <h2>Problem Setup</h2>
+                <button class="btn-example" id="btn-load-example">Load Example</button>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="num-vars">Decision Variables</label>
+                    <input type="number" id="num-vars" value="3" min="1" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="num-constraints">Constraints</label>
+                    <input type="number" id="num-constraints" value="3" min="1" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="opt-type">Objective</label>
+                    <select id="opt-type">
+                        <option value="max">Maximize</option>
+                        <option value="min">Minimize</option>
+                    </select>
+                </div>
+                <button class="btn-generate" id="btn-generate">Generate Form</button>
+            </div>
+
+            <!-- Dynamic Form -->
+            <div id="dynamic-form"></div>
+
+            <button class="btn-solve" id="btn-solve">
+                <span class="btn-solve-text">Solve</span>
+                <span class="btn-solve-icon">→</span>
+            </button>
+        </section>
+
+        <!-- Output Section -->
+        <section class="output-section" id="output-section">
+            <div class="section-header">
+                <h2>Solution</h2>
+                <button class="btn-clear" id="btn-clear">Clear</button>
+            </div>
+            <div id="output-container"></div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Built with exact fraction arithmetic &mdash; no floating point errors</p>
+    </footer>
+
+    <script src="fraction.js"></script>
+    <script src="solver.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
